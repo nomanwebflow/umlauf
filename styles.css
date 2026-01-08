@@ -1,0 +1,159 @@
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background-color: var(--_theme---background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 9999;
+    background-color: var(--_theme---background);
+    color: var(--_theme---text);
+    --_theme---background: var(--swatch--dark-900);
+    --_theme---background-2: var(--swatch--dark-800);
+    --_theme---background-3: var(--swatch--light-300);
+    --_theme---background-skeleton: color-mix(in lab, currentcolor 10%, transparent);
+    --_theme---text: var(--swatch--light-100);
+    --_theme---heading-accent: var(--swatch--brand-500);
+    --_theme---border: var(--swatch--light-100-o20);
+    --_theme---selection--background: var(--swatch--light-100);
+    --_theme---selection--text: var(--swatch--dark-900);
+    --_theme---button-primary--background: var(--swatch--brand-500);
+    --_theme---button-primary--border: var(--_theme---button-primary--background);
+    --_theme---button-primary--text: var(--swatch--light-100);
+    --_theme---button-primary--background-hover: var(--swatch--light-100);
+    --_theme---button-primary--border-hover: var(--_theme---button-primary--background-hover);
+    --_theme---button-primary--text-hover: var(--_theme---button-primary--background);
+    --_theme---button-secondary--background: var(--swatch--transparent);
+    --_theme---button-secondary--border: var(--swatch--light-100);
+    --_theme---button-secondary--text: var(--_theme---text);
+    --_theme---button-secondary--background-hover: var(--_theme---text);
+    --_theme---button-secondary--border-hover: var(--_theme---button-secondary--background-hover);
+    --_theme---button-secondary--text-hover: var(--_theme---background);
+    --_theme---text-link--text: var(--_theme---text);
+    --_theme---text-link--border: var(--_theme---border);
+    --_theme---text-link--text-hover: var(--_theme---text-link--text);
+    --_theme---text-link--border-hover: var(--swatch--brand-500);
+    --_theme---nav--background: var(--_theme---background-2);
+}
+
+.lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 0.9375rem;
+    right: 1.25rem;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2.5rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0.625rem;
+    z-index: 10;
+}
+
+.lightbox-close:hover {
+    opacity: 0.7;
+}
+
+.lightbox-content {
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    max-width: 75rem;
+    height: 100%;
+    gap: 0.9375rem;
+}
+
+/* Main Swiper */
+.lightbox-main-swiper {
+    flex: 1;
+    width: 100%;
+    min-height: 0;
+}
+
+.lightbox-main-swiper .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-main-swiper .swiper-slide img {
+    max-width: 80%;
+    max-height: 100%;
+    object-fit: contain;
+    width: auto;
+}
+
+.lightbox-main-swiper .swiper-button-prev,
+.lightbox-main-swiper .swiper-button-next {
+    color: white;
+}
+
+.lightbox-main-swiper .swiper-button-prev:after,
+.lightbox-main-swiper .swiper-button-next:after {
+    font-size: 1.875rem;
+}
+
+/* Thumbs Swiper */
+.lightbox-thumbs-swiper {
+    width: 100%;
+    padding: 0.3125rem 0;
+    padding-bottom: 1.5rem !important;
+}
+
+.lightbox-thumbs-swiper .swiper-slide {
+    width: 6.25rem;
+    height: 6.25rem;
+    opacity: 0.5;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    overflow: hidden;
+    border: 0.125rem solid transparent;
+    transition: opacity 0.2s, border-color 0.2s;
+}
+
+.lightbox-thumbs-swiper .swiper-slide:hover {
+    opacity: 0.8;
+}
+
+
+
+.lightbox-thumbs-swiper .swiper-slide-thumb-active {
+    opacity: 1;
+    border-color: white;
+}
+
+.lightbox-thumbs-swiper .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Mobile adjustments */
+@media (max-width: 48em) {
+    .lightbox-content {
+        width: 95vw;
+        height: 80vh;
+    }
+
+    .lightbox-thumbs-swiper {
+        height: 3.75rem;
+    }
+
+    .lightbox-thumbs-swiper .swiper-slide {
+        width: 4.375rem;
+        height: 3.125rem;
+    }
+
+    .lightbox-main-swiper .swiper-button-prev:after,
+    .lightbox-main-swiper .swiper-button-next:after {
+        font-size: 1.375rem;
+    }
+}
