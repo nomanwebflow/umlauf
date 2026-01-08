@@ -423,6 +423,30 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
+        // Contact
+        animateElements('[data-animation-trigger="contact"]', (el, tl, delay) => {
+            const contents = el.querySelectorAll(".u-content-wrapper > * > *");
+            const images = el.querySelectorAll('[data-animation-target="form"]');
+
+            if (contents.length) {
+                tl.from(contents, {
+                    opacity: 0,
+                    x: 50,
+                    stagger: 0.05,
+                    willChange: "transform, opacity"
+                }, delay);
+            }
+
+            if (images.length) {
+                tl.from(images, {
+                    opacity: 0,
+                    x: 50,
+                    stagger: 0.05,
+                    willChange: "transform, opacity"
+                }, delay);
+            }
+        });
+
         // Timeline
         animateElements('[data-animation-trigger="timeline"]', (el, tl, delay) => {
             const contents = el.querySelectorAll(".timeline_item_content > *:not(.timeline_item_year-wrap)");
