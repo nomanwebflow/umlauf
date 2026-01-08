@@ -422,25 +422,36 @@ document.addEventListener("DOMContentLoaded", () => {
                 }, delay);
             }
         });
-        // Split Section
-        animateElements('[data-animation-trigger="contact"]', (el, tl, delay) => {
-            const contents = el.querySelectorAll(".u-content-wrapper > * > *");
-            const images = el.querySelectorAll('[data-animation-target="form"]');
+
+        // Timeline
+        animateElements('[data-animation-trigger="timeline"]', (el, tl, delay) => {
+            const contents = el.querySelectorAll(".timeline_item_content > *:not(.timeline_item_year-wrap)");
+            const cards = el.querySelectorAll('[data-animation-target="timeline-tab"]');
+            const years = el.querySelectorAll('.timeline_item_year');
 
             if (contents.length) {
                 tl.from(contents, {
                     opacity: 0,
                     x: 50,
-                    stagger: 0.05,
+                    stagger: 0.1,
                     willChange: "transform, opacity"
                 }, delay);
             }
 
-            if (images.length) {
-                tl.from(images, {
+            if (cards.length) {
+                tl.from(cards, {
                     opacity: 0,
                     x: 50,
-                    stagger: 0.05,
+                    stagger: 0.1,
+                    willChange: "transform, opacity"
+                }, delay);
+            }
+
+            if (years.length) {
+                tl.from(years, {
+                    opacity: 0,
+                    x: 50,
+                    stagger: 0.1,
                     willChange: "transform, opacity"
                 }, delay);
             }
