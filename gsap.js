@@ -485,3 +485,66 @@ document.addEventListener("DOMContentLoaded", () => {
     // Run all animations in a single batch
     requestAnimationFrame(batchAnimations);
 });
+
+(function () {
+  const head = document.head;
+
+  const favicons = [
+    {
+      href: "https://cdn.prod.website-files.com/6944dfb7d079557130741679/6960d8f1c9189f798fb18741_favicon-lightmode.png",
+      media: "(prefers-color-scheme: light)"
+    },
+    {
+      href: "https://cdn.prod.website-files.com/6944dfb7d079557130741679/6960d8f16a212a2a38fd38c8_favicon-darkmode.png",
+      media: "(prefers-color-scheme: dark)"
+    },
+    {
+      href: "https://cdn.prod.website-files.com/6944dfb7d079557130741679/6960d8f1c9189f798fb18741_favicon-lightmode.png"
+    }
+  ];
+
+  favicons.forEach(({ href, media }) => {
+    const link = document.createElement("link");
+    link.rel = "icon";
+    link.href = href;
+    if (media) link.media = media;
+    head.appendChild(link);
+  });
+})();
+
+
+  (function() {
+    const stylesheets = [
+      'https://cdn.jsdelivr.net/gh/nomanwebflow/umlauf/styles.min.css',
+      'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css'
+    ];
+
+    let loaded = false;
+
+    function loadStyles() {
+      if (loaded) return;
+      loaded = true;
+
+      stylesheets.forEach(href => {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = href;
+        document.head.appendChild(link);
+      });
+
+      // Remove listeners after loading
+      ['scroll', 'click', 'touchstart', 'mousemove', 'keydown'].forEach(event => {
+        window.removeEventListener(event, loadStyles);
+      });
+    }
+
+    // Listen for any user interaction
+    ['scroll', 'click', 'touchstart', 'mousemove', 'keydown'].forEach(event => {
+      window.addEventListener(event, loadStyles, { once: false, passive: true });
+    });
+
+    // Fallback: load after 5 seconds if no interaction
+    setTimeout(loadStyles, 5000);
+  })();
+
+if(!("ontouchstart"in window||navigator.maxTouchPoints>0)){var script=document.createElement("script");script.setAttribute("data-id-scroll",!0),script.setAttribute("data-autoinit",!0),script.setAttribute("data-duration","1"),script.setAttribute("data-orientation","vertical"),script.setAttribute("data-smoothWheel",!0),script.setAttribute("data-smoothTouch",!1),script.setAttribute("data-touchMultiplier","1.5"),script.setAttribute("data-easing","(t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t))"),script.setAttribute("data-useOverscroll",!0),script.setAttribute("data-useControls",!0),script.setAttribute("data-useAnchor",!0),script.setAttribute("data-useRaf",!0),script.setAttribute("data-infinite",!1),script.setAttribute("defer",!0),script.setAttribute("src","https://assets-global.website-files.com/645e0e1ff7fdb6dc8c85f3a2/64a5544a813c7253b90f2f50_lenis-offbrand.txt"),document.body.appendChild(script)}
